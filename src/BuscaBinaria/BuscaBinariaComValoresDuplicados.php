@@ -33,7 +33,8 @@ class BuscaBinariaComValoresDuplicados
                 $fim = $meio - 1;
             }
         }
-        return array_unique($indicesAlvo) ?: null;
+        sort($indicesAlvo);
+        return array_values(array_unique($indicesAlvo)) ?: null;
     }
 }
 

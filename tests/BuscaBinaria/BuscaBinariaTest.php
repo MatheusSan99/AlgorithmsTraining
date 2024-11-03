@@ -68,16 +68,23 @@ namespace Tests\BuscaBinaria;
 
 use PHPUnit\Framework\TestCase;
 use TrainingAlgorithms\BuscaBinaria\BuscaBinariaComValoresDuplicados;
+use TrainingAlgorithms\BuscaBinaria\BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo;
 use TrainingAlgorithms\BuscaBinaria\BuscaBinariaSimples;
+use TrainingAlgorithms\BuscaBinaria\BuscaBinariaSimplesRecursiva;
+
 
 class BuscaBinariaTest extends TestCase
 {
     private BuscaBinariaSimples $buscaBinariaSimples;
     private BuscaBinariaComValoresDuplicados $buscaBinariaComValoresDuplicados;
+    private BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo $buscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo;
+    private BuscaBinariaSimplesRecursiva $buscaBinariaSimplesRecursiva;
     protected function setUp(): void 
     {
         $this->buscaBinariaSimples = new BuscaBinariaSimples();
         $this->buscaBinariaComValoresDuplicados = new BuscaBinariaComValoresDuplicados();
+        $this->buscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo = new BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo();
+        $this->buscaBinariaSimplesRecursiva = new BuscaBinariaSimplesRecursiva();
     }
 
     /**
@@ -102,22 +109,53 @@ class BuscaBinariaTest extends TestCase
 
     public function testBuscaBinariaComValoresDuplicados() 
     {
-        $listaComValoresDuplicados1 = [1, 3, 5, 5, 5, 7, 9];
-        $listaComValoresDuplicados2 = [2, 4, 4, 4, 8, 10, 12];
-        $alvoLista1 = 5;
-        $alvoLista2 = 4;
+        $listaComValoresDuplicadosNoComeco = [1, 1, 1, 3, 5, 7, 9];
+        $listaComValoresDuplicadosNoMeio = [2, 4, 6, 6, 6, 8, 10];
+        $listaComValoresDuplicadosNoFim = [2, 4, 6, 8, 10, 12, 12];
 
-        $buscaComValoresDuplicadosLista1 = $this->buscaBinariaComValoresDuplicados::execute($listaComValoresDuplicados1, $alvoLista1);
-        $buscaComValoresDuplicadosLista2 = $this->buscaBinariaComValoresDuplicados::execute($listaComValoresDuplicados2, $alvoLista2);
+        $alvoListaComValoresDuplicadosNoComeco = 1;
+        $alvoListaComValoresDuplicadosNoMeio = 6;
+        $alvoListaComValoresDuplicadosNoFim = 12;
 
-        $this->assertContains(2, $buscaComValoresDuplicadosLista1);
-        $this->assertContains(3, $buscaComValoresDuplicadosLista1);
-        $this->assertContains(4, $buscaComValoresDuplicadosLista1);
-
-        $this->assertContains(1, $buscaComValoresDuplicadosLista2);
-        $this->assertContains(2, $buscaComValoresDuplicadosLista2);
-        $this->assertContains(3, $buscaComValoresDuplicadosLista2);
+        $this->assertEquals([0, 1, 2], $this->buscaBinariaComValoresDuplicados::execute($listaComValoresDuplicadosNoComeco, $alvoListaComValoresDuplicadosNoComeco));
+        $this->assertEquals([2, 3, 4], $this->buscaBinariaComValoresDuplicados::execute($listaComValoresDuplicadosNoMeio, $alvoListaComValoresDuplicadosNoMeio));
+        $this->assertEquals([5, 6], $this->buscaBinariaComValoresDuplicados::execute($listaComValoresDuplicadosNoFim, $alvoListaComValoresDuplicadosNoFim));
+        
     }
+
+    /**
+     * @covers \TrainingAlgorithms\BuscaBinaria\BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo::execute
+     * @return void
+     */
+
+    public function testBuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo() 
+    {
+        $listaNumeros = [1, 3, 5, 7, 9];
+        $listaInvalida = [2, 4, 6, 8, 10];
+        $alvoListaNumeros = 4;
+        $alvoListaInvalida = 11;
+
+        $this->assertEquals(2, $this->buscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo::execute($listaNumeros, $alvoListaNumeros));
+        $this->assertEquals(null, $this->buscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo::execute($listaInvalida, $alvoListaInvalida));
+    }
+
+    /**
+     * @covers \TrainingAlgorithms\BuscaBinaria\BuscaBinariaSimplesRecursiva::execute
+     * @return void
+     */
+
+    public function testBuscaBinariaSimplesRecursiva() 
+    {
+        $listaNumeros = [1, 2, 4, 6, 8, 10];
+        $listaInvalida = [0, 2, 4, 6, 8];
+        $alvoListaNumeros = 6;
+        $alvoListaInvalida = 5;
+
+        $this->assertEquals(3, $this->buscaBinariaSimplesRecursiva::execute($listaNumeros, $alvoListaNumeros));
+        $this->assertEquals(null, $this->buscaBinariaSimplesRecursiva::execute($listaInvalida, $alvoListaInvalida));
+    }
+
+
 }
 
 
