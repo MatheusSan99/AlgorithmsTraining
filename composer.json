@@ -1,0 +1,37 @@
+{
+  "name": "training-algorithms/php",
+  "description": "All Algorithms implemented in PHP",
+  "config": {
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matheus Oliveira",
+      "email": "99matheussan@gmail.com",
+      "role": "Developer"
+    }
+  ],
+    "require": {
+      "php": "^8.2",
+      "ext-json": "*",
+      "phan/phan": "^4.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^9.5",
+      "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+      "psr-4": {
+        "TrainingAlgorithms\\": "src/"
+      }
+    },
+    "scripts": {
+      "test": "phpunit",
+      "lint": "phpcs"
+    }
+
+}
+
