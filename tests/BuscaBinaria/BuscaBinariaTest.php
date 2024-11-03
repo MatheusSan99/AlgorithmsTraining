@@ -154,8 +154,6 @@ class BuscaBinariaTest extends TestCase
         $this->assertEquals(3, $this->buscaBinariaSimplesRecursiva::execute($listaNumeros, $alvoListaNumeros));
         $this->assertEquals(null, $this->buscaBinariaSimplesRecursiva::execute($listaInvalida, $alvoListaInvalida));
     }
-
-
 }
 
 
