@@ -11,7 +11,7 @@ O propósito deste projeto é proporcionar uma experiência prática de aprendiz
 Para começar com este projeto, siga as etapas abaixo:
 
 1. Clone o repositório em sua máquina local.
-2. Instale o PHP e as dependencias em seu sistema, caso ainda não tenha feito.
+2. Instale o PHP e as dependências em seu sistema, caso ainda não tenha feito.
 3. Navegue até o diretório do projeto.
 4. Execute os arquivos PHP contendo as implementações dos algoritmos.
 
@@ -19,9 +19,21 @@ Para começar com este projeto, siga as etapas abaixo:
 
 Este projeto abrange uma ampla variedade de algoritmos, incluindo, mas não se limitando a:
 
-- Algoritmos de ordenação (por exemplo, bubble sort, insertion sort, merge sort)
-- Algoritmos de busca (por exemplo, busca linear, busca binária)
-- Algoritmos de grafos (por exemplo, busca em largura, busca em profundidade)
-- Algoritmos de programação dinâmica
-- Algoritmos gananciosos
+- **Algoritmos de ordenação** (por exemplo, bubble sort, insertion sort, merge sort)
+- **Algoritmos de busca** (por exemplo, busca linear, busca binária)
+- **Algoritmos de grafos** (por exemplo, busca em largura, busca em profundidade)
+- **Algoritmos de programação dinâmica**
+- **Algoritmos gananciosos**
 - E muitos outros!
+
+## Rodar Testes
+
+Para rodar todos os testes automatizados:
+```sh
+.\vendor\bin\phpunit tests
+```
+
+Para rodar testes em algoritmos específicos:
+```sh
+.\vendor\bin\phpunit .\tests\QuickSort\QuickSortTest.php
+```
