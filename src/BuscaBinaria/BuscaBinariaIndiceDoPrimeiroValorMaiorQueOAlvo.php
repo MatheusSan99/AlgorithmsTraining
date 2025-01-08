@@ -6,6 +6,7 @@ class BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo
 {
     public static function execute(array $listaNumeros, int $alvo) {
         $inicio = 0;
+
         $fim = count($listaNumeros) - 1;
     
         while ($inicio <= $fim) {

@@ -68,6 +68,7 @@ namespace Tests\BuscaBinaria;
 
 use PHPUnit\Framework\TestCase;
 use TrainingAlgorithms\BuscaBinaria\BuscaBinariaComValoresDuplicados;
+use TrainingAlgorithms\BuscaBinaria\BuscaBinariaEmListaPalavras;
 use TrainingAlgorithms\BuscaBinaria\BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo;
 use TrainingAlgorithms\BuscaBinaria\BuscaBinariaSimples;
 use TrainingAlgorithms\BuscaBinaria\BuscaBinariaSimplesRecursiva;
@@ -79,12 +80,15 @@ class BuscaBinariaTest extends TestCase
     private BuscaBinariaComValoresDuplicados $buscaBinariaComValoresDuplicados;
     private BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo $buscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo;
     private BuscaBinariaSimplesRecursiva $buscaBinariaSimplesRecursiva;
+    private BuscaBinariaEmListaPalavras $buscaBinariaEmListaPalavras;
+
     protected function setUp(): void 
     {
         $this->buscaBinariaSimples = new BuscaBinariaSimples();
         $this->buscaBinariaComValoresDuplicados = new BuscaBinariaComValoresDuplicados();
         $this->buscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo = new BuscaBinariaIndiceDoPrimeiroValorMaiorQueOAlvo();
         $this->buscaBinariaSimplesRecursiva = new BuscaBinariaSimplesRecursiva();
+        $this->buscaBinariaEmListaPalavras = new BuscaBinariaEmListaPalavras();
     }
 
     /**
@@ -153,6 +157,22 @@ class BuscaBinariaTest extends TestCase
 
         $this->assertEquals(3, $this->buscaBinariaSimplesRecursiva::execute($listaNumeros, $alvoListaNumeros));
         $this->assertEquals(null, $this->buscaBinariaSimplesRecursiva::execute($listaInvalida, $alvoListaInvalida));
+    }
+
+    /**
+     * @covers \TrainingAlgorithms\BuscaBinaria\BuscaBinariaEmListaPalavras::execute
+     * @return void
+     */
+
+    public function testBuscaBinariaEmListaPalavras()
+    {
+        $listaPalavras = ["apple", "banana", "cherry", "date", "fig", "grape", "kiwi"];
+        $listaInvalida = ["ant", "bat", "cat", "dog", "eel"];
+        $alvoListaPalavras = "date";
+        $alvoListaInvalida = "fox";
+
+        $this->assertEquals(3, $this->buscaBinariaEmListaPalavras::execute($listaPalavras, $alvoListaPalavras));
+        $this->assertEquals(null, $this->buscaBinariaEmListaPalavras::execute($listaInvalida, $alvoListaInvalida));
     }
 }
 
